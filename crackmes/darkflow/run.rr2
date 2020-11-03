@@ -1,0 +1,4 @@
+#!/usr/bin/rarun2
+
+program=./D4RK_FL0W-3.5
+input=input.txt

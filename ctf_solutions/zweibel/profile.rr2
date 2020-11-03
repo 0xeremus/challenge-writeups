@@ -1,0 +1,5 @@
+#!/usr/bin/rarun2
+
+program=./zwiebel
+input="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
