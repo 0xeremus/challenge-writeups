@@ -1,0 +1,16 @@
+use salsa20::cipher::{KeyIvInit, StreamCipher};
+use salsa20::Salsa20;
+fn main() {
+    let salsa_key = b"ef39f4f20e76e33bd25f4db338e81b10";
+    let salsa_nonce = b"d4c270a3";
+    let mut password = vec![
+        0x05, 0x05, 0x5f, 0xb1, 0xa3, 0x29, 0xa8, 0xd5, 0x58, 0xd9, 0xf5, 0x56, 0xa6, 0xcb, 0x31,
+        0xf3, 0x24, 0x43, 0x2a, 0x31, 0xc9, 0x9d, 0xec, 0x72, 0xe3, 0x3e, 0xb6, 0x6f, 0x62, 0xad,
+        0x1b, 0xf9,
+    ];
+
+    let mut cypher = Salsa20::new_from_slices(salsa_key, salsa_nonce).unwrap();
+    let _ = cypher.try_apply_keystream(&mut password);
+
+    println!("{}", String::from_utf8(password).unwrap());
+}
